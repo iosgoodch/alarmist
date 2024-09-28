@@ -1,0 +1,29 @@
+{
+    "alarms":[
+        {
+            "timestamp":"2026-09-22T17:07:51+0000",
+            "sound":"ocean",
+            "recurring":true
+        },
+        {
+            "timestamp":"2023-01-22T17:08:51+0000",
+            "sound":"white-noise",
+            "recurring":true
+        },
+        {
+            "timestamp":"2025-07-22T10:07:51+0000",
+            "sound":"brown-noise",
+            "recurring":true
+        },
+        {
+            "timestamp":"2023-01-01T22:45:18+0000",
+            "sound":"birds",
+            "recurring":true
+        },
+        {
+            "timestamp":"2025-09-27T11:48:00+0000",
+            "sound":"alarm-clock",
+            "recurring":true
+        }
+    ]
+}
