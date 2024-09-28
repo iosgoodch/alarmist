@@ -10,7 +10,7 @@ import Foundation
 /// Data model to hold decoded array of remote alarm models.
 struct RemoteAlarms: Codable {
     
-    var alarms: [RemoteAlarm]
+    let alarms: [RemoteAlarm]
     
     /// Mock data for building previews when actual data is unavailable.
     static var mockObjects: RemoteAlarms? {
