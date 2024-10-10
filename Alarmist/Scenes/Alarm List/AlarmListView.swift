@@ -135,7 +135,6 @@ extension AlarmListView {
         }
         
         /// Used to fetch alarms from the backend.
-        @MainActor
         func fetchAlarmList() async throws {
             let endpoint = AlarmService.Endpoint.fetchAlarmList.rawValue
             let url = BaseService().url(route: endpoint)
