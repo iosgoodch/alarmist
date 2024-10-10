@@ -39,8 +39,10 @@ struct AlarmListView: View {
                 Text("\(alarm.alarmSound.displayName) is playing...")
             }
         }
-        .alert("Unable to fetch alarm data!", isPresented: $isErrorPresented) {
+        .alert("Fetch Error", isPresented: $isErrorPresented) {
             Button("OK", role: .cancel) { }
+        } message: {
+            Text(viewModel.errorString)
         }
         .sheet(isPresented: $isNewAlarmSheetPresented) {
             AlarmPickerView(viewModel: $viewModel)
@@ -101,7 +103,12 @@ struct AlarmListView: View {
             group.addTask {
                 do {
                     try await viewModel.fetchAlarmList()
-                } catch {
+                } catch (let error) {
+                    if let fetchError = error as? FetchError {
+                        viewModel.errorString = fetchError.description
+                    } else {
+                        viewModel.errorString = error.localizedDescription
+                    }
                     isErrorPresented.toggle()
                 }
             }
@@ -121,6 +128,8 @@ extension AlarmListView {
         var alarmHasTriggered: Bool = false
         /// An array of current alarms.
         var alarmList: [Alarm]
+        /// The error string to display as an alert message.
+        var errorString: String = ""
         
         /// The current triggered alarm (optional)
         private(set) var activeAlarm: Alarm?
@@ -136,12 +145,7 @@ extension AlarmListView {
         
         /// Used to fetch alarms from the backend.
         func fetchAlarmList() async throws {
-            let endpoint = AlarmService.Endpoint.fetchAlarmList.rawValue
-            let url = BaseService().url(route: endpoint)
-            let (data, _) = try await URLSession.shared.data(from: url!)
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            let remoteAlarms: RemoteAlarms = try decoder.decode(RemoteAlarms.self, from: data)
+            let remoteAlarms = try await DataLoader.shared.fetchAlarmList()
             if !remoteAlarms.alarms.isEmpty {
                 append(alarms: remoteAlarms.alarms, deleteRemotes: true)
             }

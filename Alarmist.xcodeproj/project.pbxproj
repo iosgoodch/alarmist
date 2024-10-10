@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		505805962CB87424005F3DE0 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505805952CB87424005F3DE0 /* DataLoader.swift */; };
+		505805982CB8759E005F3DE0 /* FetchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505805972CB8759E005F3DE0 /* FetchError.swift */; };
 		5064CF342CA721F600FADE1F /* AlarmistApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5064CF332CA721F600FADE1F /* AlarmistApp.swift */; };
 		5064CF382CA721F800FADE1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5064CF372CA721F800FADE1F /* Assets.xcassets */; };
 		5064CF3B2CA721F800FADE1F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5064CF3A2CA721F800FADE1F /* Preview Assets.xcassets */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		505805952CB87424005F3DE0 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
+		505805972CB8759E005F3DE0 /* FetchError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchError.swift; sourceTree = "<group>"; };
 		5064CF302CA721F600FADE1F /* Alarmist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarmist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5064CF332CA721F600FADE1F /* AlarmistApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmistApp.swift; sourceTree = "<group>"; };
 		5064CF372CA721F800FADE1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				5064CF702CA7304400FADE1F /* AlarmAudioManager.swift */,
+				505805952CB87424005F3DE0 /* DataLoader.swift */,
 			);
 			path = Singletons;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				5064CF8E2CA7459600FADE1F /* SoundType.swift */,
+				505805972CB8759E005F3DE0 /* FetchError.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -374,6 +380,7 @@
 				5064CF8C2CA73AC800FADE1F /* View+Utilities.swift in Sources */,
 				5064CF9A2CA7B02B00FADE1F /* LocalAlarm.swift in Sources */,
 				5064CF872CA735BF00FADE1F /* Constants.swift in Sources */,
+				505805962CB87424005F3DE0 /* DataLoader.swift in Sources */,
 				5064CF5E2CA7227E00FADE1F /* AlarmListView.swift in Sources */,
 				5064CF692CA72E3500FADE1F /* BaseService.swift in Sources */,
 				5064CF6E2CA72E8200FADE1F /* AlarmService.swift in Sources */,
@@ -383,6 +390,7 @@
 				5064CF642CA72B0B00FADE1F /* String+Utilities.swift in Sources */,
 				5064CF6C2CA72E6500FADE1F /* WebServiceProtocol.swift in Sources */,
 				5064CF9C2CA7B05A00FADE1F /* AlarmProtocol.swift in Sources */,
+				505805982CB8759E005F3DE0 /* FetchError.swift in Sources */,
 				5064CF892CA7365100FADE1F /* AlarmView.swift in Sources */,
 				5064CF662CA72DBB00FADE1F /* Date+Utilities.swift in Sources */,
 			);
