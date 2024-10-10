@@ -27,11 +27,7 @@ struct AlarmListView: View {
                 }
         }
         .task {
-            do {
-                try await viewModel.fetchAlarmList()
-            } catch {
-                isErrorPresented.toggle()
-            }
+            await fetchAlarmList()
         }
         .alert("Alarm!", isPresented: $viewModel.alarmHasTriggered) {
             Button("Stop", role: .cancel) {
@@ -61,11 +57,7 @@ struct AlarmListView: View {
         }
         .listStyle(.plain)
         .refreshable {
-            do {
-                try await viewModel.fetchAlarmList()
-            } catch {
-                isErrorPresented.toggle()
-            }
+            await fetchAlarmList()
         }
     }
     
@@ -102,6 +94,18 @@ struct AlarmListView: View {
                 }
         }
         .padding(.vertical, 4.0)
+    }
+    
+    private func fetchAlarmList() async {
+        await withDiscardingTaskGroup { group in
+            group.addTask {
+                do {
+                    try await viewModel.fetchAlarmList()
+                } catch {
+                    isErrorPresented.toggle()
+                }
+            }
+        }
     }
     
 }
