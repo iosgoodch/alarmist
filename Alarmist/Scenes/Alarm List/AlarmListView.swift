@@ -63,41 +63,6 @@ struct AlarmListView: View {
         }
     }
     
-    @ViewBuilder
-    private func alarmView(_ alarm: Alarm) -> some View {
-        HStack(spacing: 12.0) {
-            if let fireDate = alarm.fireDate {
-                VStack(alignment: .leading) {
-                    Text(fireDate.relativeTitle())
-                        .font(.system(size: 10.0))
-                    Text(alarm.displayString)
-                        .font(.system(size: 28.0))
-                        .bold()
-                    Text("\(fireDate.formatted(date: .abbreviated, time: .omitted))")
-                        .font(.system(size: 8.0))
-                }
-            } else {
-                Image(systemName: "exclamationmark.triangle.fill")
-                    .font(.system(size: 20.0))
-                    .foregroundColor(.red)
-                Text("Bad Alarm")
-                    .bold()
-            }
-            Spacer()
-            Text("\(alarm.alarmSound.displayIcon)")
-                .font(.system(size: 20.0))
-                .if(alarm.isRemote) { view in
-                    view
-                        .overlay {
-                            Image(systemName: "cloud")
-                                .font(.system(size: 12.0))
-                                .offset(x: -32.0, y: 7.0)
-                        }
-                }
-        }
-        .padding(.vertical, 4.0)
-    }
-    
     private func fetchAlarmList() async {
         await withDiscardingTaskGroup { group in
             group.addTask {
